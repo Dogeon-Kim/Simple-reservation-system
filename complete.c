@@ -15,10 +15,11 @@ int arr[30];
 int main(void){
 	Node *plist;
 	Node *curr=NULL, *prev=NULL;
-	int i, a, num=0;
-	char x, y, z, l;
+	int i, a, num=0, ayy[30], x, h;
 	plist = NULL;
-	printf("베르실을 예약하시겠습니까?: \n");
+	printf("==============================\n||        베르실 예약        ||\n==============================\n");
+	printf("베르실 예약을 알고리즘과 자료구조를 활용해 C언어로 구현\n\t예약한 시간은 연결리스트를 이용해 저장되며\n\t사용자에게 선택 정렬을 이용해 정리해 화면에 띄웁니다.\n");
+	printf("베르실 예약을 하겠습니까?\n(Y: 예약, N: 취소)\n: ");
     scanf("%C", &a);
 	if(a==89){
 		while(1){
@@ -36,13 +37,10 @@ int main(void){
 		}
 	}
 	print_list(plist);
-	printf("어느 방을 예약하시겠습니까?\n");
-	scanf("%C %C %C %C", &x, &y, &z, &l);
-	for(i=0; i<4; i++){
-		if(i==0) printf("%d시에 %C방 입니다.\n", arr[i], x);
-		else if(i==1) printf("%d시에 %C방 입니다.\n", arr[i], y);
-		else if(i==2) printf("%d시에 %C방 입니다.\n", arr[i], z);
-		else if(i==3) printf("%d시에 %C방 입니다.\n", arr[i], l);
+	printf("차례대로 어느 방을 예약하시겠습니까?\n");
+	for(int h=0; h<4; h++){
+		scanf("%d", &x);
+		printf("%d번 방은 %d시에 예약\n", x, arr[h]);
 	}
 	return 0;
 }
@@ -53,6 +51,7 @@ void print_list(Node *plist){
 	p=plist;
 	while(p){
 		list[m]=p->data;
+		arr[m]=p->data;
 		p=p->next;
 		m+=1;
 	}
@@ -64,11 +63,12 @@ void print_list(Node *plist){
         list[k]=temp;
     }
     for(i=0; i<n; i++) printf("%02d ", list[i]);
+	printf("시에 예약하겠습니다.\n\n");
 }
 
 int get_integer(){
 	int num, a;
-    printf("예약할 베르실의 번호를 입력하세요(종료 -1): \n");
+    printf("베르실을 몇시에 예약할까요?\n(1~9시, 한번 예약은 1시간 입니다.)\n: ");
 	scanf("%d", &num);
 	return num;
 }
